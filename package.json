@@ -1,0 +1,36 @@
+{
+  "name": "codecompass-mcp",
+  "version": "1.0.0",
+  "description": "CodeCompass MCP Server - 生成可点击的代码分屏跳转链接",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "codecompass-mcp": "dist/index.js",
+    "codecompass": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "skills/codecompass/SKILL.md",
+    "extensions/codecompass-preview/codecompass-preview-*.vsix"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "prepack": "npm run build && npm run package:extension",
+    "start": "node dist/index.js",
+    "install:codecompass": "node dist/cli.js install",
+    "setup:extension": "npm --prefix extensions/codecompass-preview install && npm --prefix extensions/codecompass-preview run build",
+    "package:extension": "npm --prefix extensions/codecompass-preview install && npm --prefix extensions/codecompass-preview run build && cd extensions/codecompass-preview && npx vsce package --no-dependencies --allow-missing-repository",
+    "setup:all": "npm run build && npm run setup:extension"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

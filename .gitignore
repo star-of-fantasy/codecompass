@@ -1,0 +1,9 @@
+.aura/
+.cursor/
+.sanshu-memory/
+.vscode/
+agent-transcripts/
+node_modules/
+extensions/codecompass-preview/node_modules/
+*.log
+*.tgz

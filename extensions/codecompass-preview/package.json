@@ -1,0 +1,64 @@
+{
+  "name": "codecompass-preview",
+  "displayName": "CodeCompass Preview",
+  "description": "让 Markdown 预览中的 CodeCompass 链接以右侧分栏打开并定位到行号",
+  "version": "0.0.4",
+  "publisher": "codecompass",
+  "repository": {
+    "type": "git",
+    "url": "https://example.invalid/codecompass/codecompass-mcp"
+  },
+  "private": true,
+  "engines": {
+    "vscode": "^1.105.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onUri",
+    "onCommand:codecompassPreview.openUri",
+    "onCommand:codecompassPreview.newSplitNext",
+    "onCommand:codecompassPreview.resetPinnedSplit"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codecompassPreview.openUri",
+        "title": "CodeCompass Preview: 打开链接（右侧分栏）"
+      },
+      {
+        "command": "codecompassPreview.newSplitNext",
+        "title": "CodeCompass Preview: 下一次点击新建分栏"
+      },
+      {
+        "command": "codecompassPreview.resetPinnedSplit",
+        "title": "CodeCompass Preview: 清除固定分栏"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "codecompassPreview.newSplitNext",
+        "key": "ctrl+alt+n",
+        "mac": "cmd+alt+n"
+      },
+      {
+        "command": "codecompassPreview.resetPinnedSplit",
+        "key": "ctrl+alt+shift+n",
+        "mac": "cmd+alt+shift+n"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "tsc -p .",
+    "watch": "tsc -p . -w",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/vscode": "^1.105.0",
+    "@vscode/vsce": "^3.6.0",
+    "typescript": "^5.7.0"
+  }
+}
